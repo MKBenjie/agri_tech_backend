@@ -51,7 +51,7 @@ class RetrieveImage(View):
 
 
 class ProcessImage:
-    model_api_url = 'https://agritech-api-4474.onrender.com/predict'
+    model_api_url = 'https://agritech-api-yjfc.onrender.com/predict'
 
     @classmethod
     def process(cls, image):
