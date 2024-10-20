@@ -48,7 +48,7 @@ class RetrieveImage(View):
 
 
 class ProcessImage:
-    model_api_url = 'https://agritech-api-4474.onrender.com/'
+    model_api_url = 'http://localhost:8080/predict'
 
     @classmethod
     def process(cls, image):
@@ -102,4 +102,3 @@ class ResultView(View):
             'symptoms': [symptom.symptom for symptom in query_model['symptoms']],
             'treatment_guidelines': [guideline.guideline for guideline in query_model['treatment_guidelines']],
         })
-
