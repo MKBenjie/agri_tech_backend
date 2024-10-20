@@ -1,0 +1,140 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<style>
+    .results-section {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .results-container {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .disease-image img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .disease-info {
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+    
+    .disease-info h3 {
+        font-size: 1.5rem;
+        color: #333;
+    }
+    
+    .disease-info p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+    
+    .disease-description {
+        margin-bottom: 20px;
+    }
+    
+    .disease-description h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .symptoms-section table, .treatment-section table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .symptoms-section td, .treatment-section td {
+        padding: 8px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .symptoms-section td:first-child, .treatment-section td:first-child {
+        width: 40px;
+        font-weight: bold;
+    }
+    
+    .symptoms-section td:last-child, .treatment-section td:last-child {
+        text-align: left;
+    }
+    
+    .treatment-section {
+        margin-top: 20px;
+    }
+    
+    .treatment-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <section id="results-section" class="results-section" >
+        <div class="results-container">
+        <h2>Disease Prediction Results</h2>
+
+        <div class="result-item">
+            <div class="disease-image">
+            <img id="disease-img" src="{{ disease.image.url }}" alt="Disease Image" />
+            </div>
+            <div class="disease-info">
+            <h3 id="disease-name">{{ predicted_class }}</h3>
+            <p id="disease-probability">Probability: {{ probability }}%</p>
+            </div>
+        </div>
+
+        <div class="disease-description">
+            <h3>Description</h3>
+            <p id="disease-description">{{ disease.description }}</p>
+        </div>
+
+        <!-- Symptoms -->
+        <div class="symptoms-section">
+            <h3>Symptoms</h3>
+            <table>
+            <tbody id="symptoms-list">
+                {% for symptom in symptoms %}
+                    <tr data-index="{{ forloop.counter0 }}">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ symptom }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+        <div class="treatment-section">
+            <h3>Treatment Guidelines</h3>
+            <table>
+            <tbody id="treatment-list">
+                {% for treatment_guideline in treatment_guidelines %}
+                    <tr data-index="{{ forloop.counter0 }}">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ treatment_guideline }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+</body>
+</html>
